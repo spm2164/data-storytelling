@@ -1,0 +1,36 @@
+<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial -->
+<!-- When you're making SVGs by hand you need to include this namespace stuff -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<!-- 
+		images take xlink:href for the filename, x, y, height and width
+		height and width are the bounding box that the image 
+		must fit into without ruining the aspect ratio
+	-->
+ 	<image xlink:href="napoleon.png" x="300" y="50" height="500" width="500" />
+
+ 	<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes -->
+
+ 	<!-- Circles take cx, cy and r, but can be styled as well -->
+ 	<circle cx="50" cy="70" r="40" />
+ 	<circle cx="150" cy="70" r="50" stroke="yellow" stroke-width="4" fill="green" />
+ 	<circle cx="250" cy="70" r="10" stroke="blue" stroke-width="2" fill="beige" />
+
+ 	<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts -->
+ 	<!-- text elements require an x and a y -->
+ 	<text x="300" y="30">hello there, is this the best graphic you've ever seen?</text>
+
+ 	<!-- Rectangles require x, y, width and height, but can be styled as well -->
+ 	<rect x="100" y="200" width="200" height="200" />
+ 	<rect x="150" y="330" width="400" height="100" stroke="black" stroke-width="4" fill-opacity="0.5" fill="purple" stroke-dasharray="5,10,5" />
+
+ 	<!-- Polylines are lines, but you'll probably just always use paths that aren't filled in -->
+	<polyline points="60 110 65 120 70 115 75 130 80 125 85 140 90 135 95 150 100 145" stroke="orange" fill="transparent" stroke-width="5"/>
+
+ 	<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths -->
+ 	<!-- Paths are used to create shapes, can just require a d -->
+ 	<!-- The coordinates are in relation to the top left corner -->
+ 	<path d="M 100 100 L 300 100 L 200 300 z" fill="orange" stroke="black" stroke-width="3" />
+
+ 	<!-- Using the same d, but moved with transform="translate(x, y)" -->
+ 	<path d="M 100 100 L 300 100 L 200 300 z" fill="orange" stroke="black" stroke-width="3" transform="translate(50, 400)" />
+</svg>

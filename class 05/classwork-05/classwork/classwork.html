@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+  <head>
+    <!-- The browser can use non-English-language characters (...kind of) -->
+      <meta charset="utf-8">
+      <style>
+      body { font-family: Helvetica; }
+      svg { background: #f9f9f9; }
+
+      #chart-1 .bar,
+      #chart-4 .bar  {
+        fill: lightblue;
+      }
+
+      #chart-1 .bar:hover,
+      #chart-4 .bar:hover {
+        fill: steelblue;
+      }
+
+      text {
+        fill: #333;
+      }
+      </style>
+  </head>
+  <body>
+    <h1>Classwork 5: Interaction</h1>
+
+    <h1>Part One: Accessing your data</h1>
+
+    <h2>1. Tooltips via hovering</h2>
+    <div id="chart-1"></div>
+
+    <h2>2. Using HTML classes to highlight</h2>
+    <div id="chart-2">
+      <p>I am interested in <span id="zymotic">zymotic disease</span> or <span id="wounds">wounds</span> or maybe <span id="other">other</span>.
+    </div>
+
+    <h2>3. Finding data points with d3.bisector</h2>
+    <div id="chart-3"></div>
+
+    <h1>Part Two: Changing your data</h1>
+
+    <h2>4. Sorting, rebinding and key functions</h2>
+    <div id="chart-4">
+      <p><strong>Sort by:</strong> <button>Frequency</button> <button>Alphabetic order</button></p>
+    </div>
+
+    <h2>5. Reshaping scales and axes</h2>
+    <div id="chart-5a"></div>
+    <div id="chart-5b"></div>
+
+    <h2>6. Sub-charts via nesting</h2>
+    <div id="chart-6"></div>
+
+    <!-- This is D3, our graphing library -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+    <!--
+      This is d3-tip, which will give us d3 tooltips
+      https://github.com/Caged/d3-tip
+    -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+      <link rel="stylesheet" href="//rawgithub.com/Caged/d3-tip/master/examples/example-styles.css">
+
+    <!-- Now we include our actual visualization -->
+      <script src="chart-1.js"></script>
+      <script src="chart-2.js"></script>
+      <script src="chart-3.js"></script>
+      <script src="chart-4.js"></script>
+      <script src="chart-5a.js"></script>
+      <script src="chart-5b.js"></script>
+      <script src="chart-6.js"></script>
+  </body>
+</html>

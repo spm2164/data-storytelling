@@ -1,0 +1,25 @@
+<!-- https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial -->
+<!-- When you're making SVGs by hand you need to include this namespace stuff -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect x="450" y="50" height="100" width="300" fill="blue" stroke-width="10" stroke="pink" opacity="0.5"/>
+  <rect x="480" y="20" height="300" width="100" fill="blue" stroke-width="10" stroke="pink" opacity="0.5"/>
+  <circle cx="400" cy="400" r="250" fill="green" stroke="black" stroke-width="10"/>
+  <circle cx="200" cy="200" r="150" fill="pink" stroke="black" stroke-width="10"/>
+  <text x="0" y="40" font-family="Verdana" font-size="50" fill="red"> These guys are having fun riding steeds! </text>
+  <image xlink:href="napoleon.png" x="10" y="50" height="500" width="500">
+    <animate attributeType="XML"
+                 attributeName="x"
+                 from="120" to="0"
+                 dur="10s"
+                 repeatCount="indefinite"/>
+  </image>
+  <image xlink:href="pony.jpg" x="500" y="50" height="500" width="500">
+    <animate attributeType="XML"
+                 attributeName="x"
+                 from="640" to="520"
+                 dur="10s"
+                 repeatCount="indefinite"/>
+  </image>
+
+
+</svg>

@@ -1,0 +1,30 @@
+We just circles not based on linear growth of a radius, but on area
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You're looking for a scaleSqrt to use with r

@@ -1,0 +1,58 @@
+Definitely read http://jonathansoma.com/lede/storytelling/d3/event-names/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Hover is two events - one event for going over the circle, one event for leaving the circle.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+If you wanted to do it with classes instead of doing it with attr, add and remove the class 'selected' from the circle. Then add
+.selected { fill: red; }
+to the <style></style> section up to
