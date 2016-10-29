@@ -38,14 +38,14 @@
         var PriceM = data[i].MedQ;
         var PriceL = data[i].LowQ;
         var dataPoint = [State, dDate, PriceH, PriceM, PriceL]
-
-        if (jState === dataPoint.State){
-          console.log("match");
-          usa.features[j].properties.prices.push(dataPoint);
-         }
-        else{
-          console.log("no match")
-        }
+        //console.log(dataPoint);
+        // if (jState === dataPoint.State){
+        //   console.log("match");
+        //   usa.features[j].properties.prices.push(dataPoint);
+        //  }
+        // else{
+        //   console.log("no match")
+        // }
         //console.log(i, dataPoint)
 
       }
