@@ -1,9 +1,12 @@
 (function() {
-    var margin = { top: 30, left: 30, right: 30, bottom: 30},
-    height = 500 - margin.top - margin.bottom,
-    width = 960 - margin.left - margin.right;
 
-  // What is this???
+  Object.values = Object.values || function(o){return Object.keys(o).map(function(k){return o[k]})};
+
+  var margin = { top: 30, left: 30, right: 30, bottom: 30},
+  height = 500 - margin.top - margin.bottom,
+  width = 960 - margin.left - margin.right;
+
+
   var svg = d3.select("#USA")
         .append("svg")
         .attr("height", height + margin.top + margin.bottom)
@@ -11,11 +14,11 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-
+  var colorScale = d3.scaleLinear().domain([100, 400]).range(["#74c476", "#00441b"])
 
   queue()
     .defer(d3.json, "USA.json")
-    .defer(d3.csv, "marijuana-street-price-clean.csv")
+    .defer(d3.json, "weed.json")
     .await(ready)
 
   function ready(error, usa, data) {
@@ -30,42 +33,68 @@
     for (var j=0; j<usa.features.length; j++){
 
       var jState = usa.features[j].properties.NAME;
-      //console.log(jState)
-      for (var i=0; i<data.length; i++){
-        var State = data[i].State;
-        var dDate = data[i].date;
-        var PriceH = data[i].HighQ;
-        var PriceM = data[i].MedQ;
-        var PriceL = data[i].LowQ;
-        var dataPoint = [State, dDate, PriceH, PriceM, PriceL]
-        //console.log(dataPoint);
-        // if (jState === dataPoint.State){
-        //   console.log("match");
-        //   usa.features[j].properties.prices.push(dataPoint);
-        //  }
-        // else{
-        //   console.log("no match")
-        // }
-        //console.log(i, dataPoint)
 
+      for (var i=0; i<51; i++){
+
+        if (jState === data.state[i]){
+           usa.features[j].properties.HighQ=data.HighQ[i];
+           usa.features[j].properties.MedQ=data.MedQ[i];
+           usa.features[j].properties.LowQ=data.LowQ[i];
+        }
       }
     }
 
 
-    console.log(usa)
+    //console.log(usa)
 
     svg.selectAll("path")
       .data(usa.features)
       .enter().append("path")
       .attr("d", path)
-      .attr("opacity", 0.75)
-      .attr("fill", "red")
+      .attr("opacity", 0.7)
+      .attr("fill", function(d){
+        var HighQ = d.properties.HighQ;
+        return colorScale(d3.mean(Object.values(HighQ)));
+      })
       .on("mouseover", function(){
         d3.select(this)
-          .attr("fill", "blue")})
+          .attr("opacity", 0.85)})
       .on("mouseout", function(){
         d3.select(this)
-          .attr("fill", "red")})
+          .attr("opacity", 0.7)})
+
+      d3.select("#HighQ")
+        .on('click', function(){
+          d3.selectAll('path')
+            .transition()
+            .duration(1000)
+            .attr("fill", function(d){
+              var HighQ = d.properties.HighQ;
+              return colorScale(d3.mean(Object.values(HighQ)));
+            })
+        })
+
+      d3.select("#MedQ")
+        .on('click', function(){
+          d3.selectAll('path')
+            .transition()
+            .duration(1000)
+            .attr("fill", function(d){
+              var MedQ = d.properties.MedQ;
+              return colorScale(d3.mean(Object.values(MedQ)));
+            })
+        })
+
+      d3.select("#LowQ")
+        .on('click', function(){
+          d3.selectAll('path')
+            .transition()
+            .duration(1000)
+            .attr("fill", function(d){
+              var LowQ = d.properties.LowQ;
+              return colorScale(d3.mean(Object.values(LowQ)));
+            })
+        })
 
 
   }
